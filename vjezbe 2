@@ -1,18 +1,22 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+
 //racuna porsinu prstena omeđenog dvijema krugovima
 /*
-float povrsina(int r, int c) {
+float povrsina(float r, float c) {
     float površinavećeg, površinamanjeg, površinaprstena;
     r = r / 2;
     c = c / 2;
     površinavećeg = (r * r * 3.14);
     površinamanjeg = (c * c * 3.14);
-    površinaprstena = površinavećeg - površinamanjeg;
-    return površinaprstena;
+     if (površinamanjeg > površinavećeg)
+        return površinamanjeg- površinavećeg;
+    return  površinavećeg-površinamanjeg  ;
+   
 
 }
+
 int main() {
     float r, c;
     cout << "unesi polumjer većeg kruga  i unesi polumjer manjeg kruga " << endl;
@@ -20,8 +24,8 @@ int main() {
     cin >> c;
     cout << povrsina(r, c) << " cm2";
     return 0;
-}
-*/
+}*/
+/*
 //vrati broj parnih znamenaka u broju
 /*void ispisparnih(int a) {
     int parni = 0;
@@ -43,7 +47,8 @@ int main() {
 }
 */
 //unosima brojeve dak nije prosti i ispise unos unesenih brojeva
-/*bool prosti(int a) {
+/*
+bool prosti(int a) {
     if (a <= 1) {
         return 1;
     }
@@ -71,8 +76,8 @@ int main() {
     } while (prosti(a));
         cout << " broj unesenih brojeva prije prostog " << brojac << endl;
         return 0;
-}*/
-
+}
+*/
 //ispiše udaljenost između 2 slovo
 /*
 int udaljenostslova(char prvoslovo, char drugoslovo) {
