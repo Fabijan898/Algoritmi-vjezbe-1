@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+// zamjeni razmak sa ničim
+/*
+void IspisPolja(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void MakniRazmake(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == ' ') {
+            for (int j = i; *(pp + j) != '\0'; j++) {
+                *(pp + j) = *(pp + j + 1);
+            }
+        }
+    }
+}
+
+int main() {
+    char Polje[1000];
+    gets_s(Polje); 
+    MakniRazmake(&Polje[0]);
+    IspisPolja(&Polje[0]);
+}*/
+// zamjeni razmak s $
+/*void zamijenirazmake(char* recenica) {
+    while (*recenica) {
+        if (*recenica == ' ') {
+            *recenica = '$';
+        }
+        recenica++;
+    }
+}
+
+int main() {
+    const int max = 100;
+    char recenica[max];
+    gets_s(recenica, max);
+    zamijenirazmake(recenica);
+    cout << recenica << endl;
+    return 0;
+}*/
+//vrati zbroj elemenata niza dok ne dođe do nule a 9 je adresa na kojoj će se to ispisati
+/*
+int zbrojelemenata(int* pi) {
+    int zbroj = 0;
+    for (int i = 0; *(pi + i) != 0; i++)
+        zbroj += *(pi + i);
+        return zbroj;
+}
+int main() {
+    int a=9;
+    int* f;
+    f = (&a);
+    cout << a << endl;
+    int polje[] = { 1,4,7,0 };
+    cout << zbrojelemenata(polje);
+    return 0;
+}*/
+//oduzme 1 od adrese na kojoj se nalazi
+/*
+void oduzme(int* pi) {
+    *pi = *pi - 1;
+}
+int main() {
+    int a = 7;
+    int* f;
+    f = &a;
+    oduzme(f);
+    cout << a;
+    return 0;
+}*/
+// provjeri broj parnih brojeva koristeci pokazivace;
+/*
+void provjeriparnost(int broj, int* brojparnih) {
+    *brojparnih = 0; 
+
+    while (broj != 0) {
+        if (broj % 2 == 0) {
+            (*brojparnih)++; 
+        }
+        broj /= 10;
+    }
+}
+
+int main() {
+    int uneseniBroj;
+    cin >> uneseniBroj;
+    int brojParnih;
+    provjeriparnost(uneseniBroj, &brojParnih);
+    cout << brojParnih;
+
+    return 0;
+}
+*/
