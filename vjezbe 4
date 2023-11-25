@@ -1,0 +1,592 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+// zamjeni razmak sa $$
+/*
+void Ispis(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void Zamijeni(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == ' ') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0') 
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna; 
+                pomocna--;
+            }
+            *pomocna = '$'; 
+            *(pomocna + 1) = '$';
+        }
+    }
+}
+int main() {
+    char polje[1000];
+    gets_s(polje);
+    Zamijeni(polje);
+    Ispis(polje);
+    return 0;
+}*/
+
+//zamjeni razmak sa $
+/*
+void ZamjeniRazmake(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == ' ') {
+            *(pp + i) = '$';
+        }
+    }
+}
+void IspisPolja(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+int main() {
+    char Polje[1000];
+    gets_s(Polje); 
+    ZamjeniRazmake(&Polje[0]);
+    IspisPolja(&Polje[0]);
+    return 0;
+}
+*/
+// makne razmak
+/*
+void IspisPolja(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void MakniRazmake(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == ' ') {
+            for (int j = i; *(pp + j) != '\0'; j++) {
+                *(pp + j) = *(pp + j + 1);
+            }
+        }
+    }
+}
+
+int main() {
+    char Polje[1000];
+    gets_s(Polje); 
+    MakniRazmake(&Polje[0]);
+    IspisPolja(&Polje[0]);
+    return 0;
+}*/
+// ispise najveci broj slova u nekoj recenici ako je vise slova isto onda ispise po abecedi slovo koje prvo dalazi
+/*
+char najcesceSlovo(const char* niz) {
+    if (niz == nullptr || *niz == '\0') {
+        return '\0';
+    }
+    int brojac[26] = { 0 };  
+    while (*niz) {
+        if (isalpha(*niz)) {
+            brojac[tolower(*niz) - 'a']++;
+        }
+        niz++;
+    }
+    char najcesce = 'a';
+    int najcesceBroj = brojac[0];
+
+    for (int i = 1; i < 26; i++) {
+        if (brojac[i] > najcesceBroj) {
+            najcesce = 'a' + i;
+            najcesceBroj = brojac[i];
+        }
+    }
+    return najcesce;
+}
+int main() {
+    const char* niz = "zzaanm";
+    char rezultat = najcesceSlovo(niz);
+    if (rezultat != '\0') {
+        cout << "Najčešće slovo je " << rezultat << endl;
+    }
+    else {
+        cout << "Niz je prazan " << endl;
+    }
+    return 0;
+}
+*/
+// pretvori negativne u pozitivne do ne naiđe na 0
+/*
+void pretvoriUPozitivne(int* polje) {
+    while (*polje != 0) {
+        if (*polje < 0) {
+            *polje = -*polje;
+        }
+        polje++;
+    }
+}
+void ispisiPolje(int* polje) {
+    while (*polje != 0) {
+        cout << *polje << " ";
+        polje++;
+    }
+    cout << endl;
+}
+int main() {
+    int polje[] = {1, -2, 0, -4, 5, 0};
+    cout << "Polje pre pretvorbe";
+    ispisiPolje(polje);
+    pretvoriUPozitivne(polje);
+   cout << "Polje nakon pretvorbe ";
+    ispisiPolje(polje);
+    return 0;
+}
+*/
+/*
+int main() {
+    const int maks_duzina = 100;
+    char recenica[maks_duzina];
+
+    std::cout << "Unesite recenicu sa malim slovima engleske abecede: ";
+    std::cin.getline(recenica, maks_duzina);
+
+    ispisiBrojeve(recenica);
+
+    return 0;
+}
+*/
+
+//  funkciju koja vaća koliko je parnih elemenata u nasumično generiranom polju[-50, 50]
+ // funkciju koja iz tog istog polja odvaja parne i negativne elemente u posebna polja
+ // funkciju koja oduzima iz prvog polja elemente iz polja s parnim i iz polja s negativnim elementima
+/*
+void IspisPolja(int* pp) { 
+    for (int i = 0; *(pp + i) <= 50 && *(pp + i) >= -50; i++) {
+        cout << *(pp + i) << " ";
+    }
+}
+int BrojParnihEl(int* pp, int n) { 
+    int br = 0;
+    for (int i = 0; i < n; i++) {
+        if (*(pp + i) % 2 == 0)
+            br++;
+    }
+    return br;
+}
+void ParniINegativni(int* pp, int* ppa, int* pne, int n) { 
+    int br1 = 0, br2 = 0;
+    for (int i = 0; i < n; i++) {
+        if (*(pp + i) % 2 == 0) {
+            *(ppa + br1) = *(pp + i);
+            br1++;
+        }
+        if (*(pp + i) < 0) {
+            *(pne + br2) = *(pp + i);
+            br2++;
+        }
+    }
+}
+void Oduzimanje(int* pp, int* ppa, int* pne, int n) { 
+    for (int i = 0; *(pp + i) <= 50 && *(pp + i) >= -50; i++) { 
+        for (int j = 0; *(ppa + j) <= 50 && *(ppa + j) >= -50; j++) {
+            if (*(pp + i) == *(ppa + j)) {
+                for (int k = i; *(pp + k) <= 50 && *(pp + k) >= -50; k++) {
+                    *(pp + k) = *(pp + k + 1);
+                }
+            }
+        }
+        for (int j = 0; *(pne + j) <= 50 && *(pne + j) >= -50; j++) { 
+            if (*(pp + i) == *(pne + j)) {
+                for (int k = i; *(pp + k) <= 50 && *(pp + k) >= -50; k++) {
+                    *(pp + k) = *(pp + k + 1);
+                }
+            }
+        }
+    }
+}
+int main() {
+    int polje[10], poljepa[10], poljene[10];
+    for (int i = 0; i < 10; i++) { 
+        polje[i] = rand() % (50 + 50) - 50;
+    }
+    IspisPolja(polje);
+    cout << endl << BrojParnihEl(polje, 10) << endl;
+    ParniINegativni(polje, poljepa, poljene, 10);
+    IspisPolja(poljepa);
+    cout << endl;
+    IspisPolja(poljene);
+    Oduzimanje(polje, poljepa, poljene, 10);
+    cout << endl;
+    IspisPolja(polje);
+}
+*/
+//Napiši funkciju koja sortira znakove u rečenici od najmanjeg do najvećeg pomoću selectiton sorta
+// Napiši funkciju koja sortira znakove u rečenici od najmanjeg do najvećeg pomoću bubble sorta
+// Napiši funkciju koja vraća index elementa d kojeg trebamo krenuti kako bismo "skočili" preko najviše različitih elemenata, 
+//skačemo na element indexa vrijednosti koja se nalazi na početnom indexu, zatim na index vrijednosti koja se nalazi na prethodnom indexu i tako u krug,
+//primjer imamo polje [0, 1, 2, 1, 3] i krećemo od indexa skočili bismo samo na njega jer je njegova vrijednost 0, a ako krenemo s indexa 3 
+//onda bismo skočili na njega i na element na indexu 1, najviše skokova bi napravili ako krenemo s indexa 4 (elementi polja neće biti veći od 
+//ukupnog broja elemenata, ako se rezultati poklapaju funkcija vraća onaj koji se prvi javlja u polju).
+
+/*
+void SSort(char* pp) { 
+    int min = 0;
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        min = i;
+        for (int j = i; *(pp + j) != '\0'; j++) {
+            if (*(pp + j) < *(pp + min)) {
+                min = j;
+            }
+        }
+        int pomocna = *(pp + i);
+        *(pp + i) = *(pp + min);
+        *(pp + min) = pomocna;
+    }
+}
+void BSort(char* pp) { 
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        for (int j = 0; *(pp + j + 1) != '\0'; j++) {
+            if (*(pp + j) > *(pp + j + 1)) {
+                int pomocna = *(pp + j);
+                *(pp + j) = *(pp + j + 1);
+                *(pp + j + 1) = pomocna;
+            }
+        }
+    }
+}
+
+void Ispis(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+int Skokovi(int* pp, int n) {
+    int Index = 0, VrijednostNaIndexu = 0, trenutacno = 0, max = 0, MaxIndex = 0;
+    for (int i = 0; i < n; i++) {
+        trenutacno = 0;
+        Index = i;
+        for (int j = 0; j < n; j++) {
+            VrijednostNaIndexu = *(pp + Index);
+            if (*(pp + VrijednostNaIndexu) == Index && i == 1) {
+                trenutacno++;
+                break;
+            }
+            else if (*(pp + VrijednostNaIndexu) == Index)
+                break;
+            Index = VrijednostNaIndexu;
+            trenutacno++;
+        }
+        if (trenutacno > max) {
+            max = trenutacno;
+            MaxIndex = i;
+        }
+    }
+    return MaxIndex;
+}
+
+int main()
+{
+    char recenica[1000];
+    cout << "Zadatak 1.0/1.1:" << '\n' << "Unesi recenicu: ";
+    gets_s(recenica);
+    //SSort(recenica)
+    BSort(recenica);
+    Ispis(recenica);
+    cout << '\n' << "Zadatak 2.0:" << '\n' << "Unesi broj elemenata polja: ";
+    int n, a, polje[100];
+    cin >> n;
+    cout << "Unesi " << n << " elemenata manjih od " << n << "!" << '\n';
+    for (int i = 0; i < n; i++) {
+        cout << "Unesi " << i + 1 << ". element: ";
+        cin >> a;
+        polje[i] = a;
+    }
+    cout << "Za najvise skokova pocni na indexu: " << Skokovi(polje, n);
+
+}*/
+// nokia ako ali funkcionira sam ako se sve pise skupa
+/*
+void Ispis(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void Zamijeni(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == 'a') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '2';
+            *(pomocna + 1) = '2';
+        }
+        if (*(pp + i) == 'b') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '22';
+            *(pomocna + 1) = '22';
+        }if (*(pp + i) == 'c') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '222';
+            *(pomocna + 1) = '222';
+        }if (*(pp + i) == 'd') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '3';
+            *(pomocna + 1) = '3';
+        }if (*(pp + i) == 'e') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '33';
+            *(pomocna + 1) = '33';
+        }
+        if (*(pp + i) == 'f') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '333';
+            *(pomocna + 1) = '333';
+        }
+        if (*(pp + i) == 'g') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '4';
+            *(pomocna + 1) = '4';
+        }
+        if (*(pp + i) == 'h') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '44';
+            *(pomocna + 1) = '44';
+        }
+        if (*(pp + i) == 'i') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '444';
+            *(pomocna + 1) = '444';
+        }
+        if (*(pp + i) == 'j') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '5';
+            *(pomocna + 1) = '5';
+        }
+        if (*(pp + i) == 'k') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '55';
+            *(pomocna + 1) = '55';
+        }if (*(pp + i) == 'l') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '555';
+            *(pomocna + 1) = '555';
+        }
+        if (*(pp + i) == 'm') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '6';
+            *(pomocna + 1) = '6';
+        }
+        if (*(pp + i) == 'n') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '66';
+            *(pomocna + 1) = '66';
+        }
+        if (*(pp + i) == 'o') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '666';
+            *(pomocna + 1) = '666';
+        }
+        if (*(pp + i) == 'p') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '7';
+            *(pomocna + 1) = '7';
+        }if (*(pp + i) == 'r') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '77';
+            *(pomocna + 1) = '77';
+        }if (*(pp + i) == 's') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '777';
+            *(pomocna + 1) = '777';
+        }if (*(pp + i) == 't') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '8';
+            *(pomocna + 1) = '8';
+        }if (*(pp + i) == 'u') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '88';
+            *(pomocna + 1) = '88';
+        }if (*(pp + i) == 'v') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '888';
+            *(pomocna + 1) = '888';
+        }if (*(pp + i) == 'z') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '9';
+            *(pomocna + 1) = '9';
+        }if (*(pp + i) == 'x') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '99';
+            *(pomocna + 1) = '99';
+        }
+        if (*(pp + i) == 'y') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '999';
+            *(pomocna + 1) = '999';
+        }if (*(pp + i) == 'q') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '0';
+            *(pomocna + 1) = '0';
+        }
+
+    }
+}
+int main() {
+    char polje[1000];
+    gets_s(polje);
+    Zamijeni(polje);
+    Ispis(polje);
+    return 0;
+}  
+*/
+
