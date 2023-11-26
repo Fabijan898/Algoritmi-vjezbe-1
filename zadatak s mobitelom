@@ -1,0 +1,197 @@
+#include <iostream>
+using namespace std;
+
+
+/*
+void Ispis(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void Zamijeni(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) == 'a') {               // zamjena za jedan znak
+            *(pp + i) = '2';
+        }
+        else if (*(pp + i) == 'b') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')          // zamjena za 2 znaka
+                pomocna++;
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '2';
+            *(pomocna + 1) = '2';
+
+        }
+        else if (*(pp + i) == 'c') {
+            char* pomocna = pp + i;
+            while (*(pomocna) != '\0')
+                pomocna++;                        // zamjena za 3 znaka
+            while (pomocna != pp + i) {
+                *(pomocna + 1) = *pomocna;
+                pomocna--;
+            }
+            *pomocna = '2';
+            *(pomocna + 1) = '2';
+            *(pomocna + 2) = '2';
+            *(pomocna + 3) = '\0';
+        }
+
+// nokia zadatak
+/*
+void Ispis(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        cout << *(pp + i);
+    }
+}
+
+void Zamijeni(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        switch (*(pp + i)) {
+        case 'a':
+            *(pp + i) = '2';
+            break;
+        case 'b':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '2';
+            *(pp + i + 1) = '2';
+            break;
+            
+        case 'c':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '2';
+            *(pp + i + 1) = '2';
+            *(pp + i + 2) = '2';
+            break;
+        case 'd':
+            *(pp + i) = '3';
+            break;
+        case 'e':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '3';
+            *(pp + i + 1) = '3';
+            break;
+
+        case 'f':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '3';
+            *(pp + i + 1) = '3';
+            *(pp + i + 2) = '3';
+            break;
+        case 'g':
+            *(pp + i) = '4';
+            break;
+        case 'h':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '4';
+            *(pp + i + 1) = '4';
+            break;
+
+        case 'i':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '4';
+            *(pp + i + 1) = '4';
+            *(pp + i + 2) = '4';
+            break;
+        case 'j':
+            *(pp + i) = '5';
+            break;
+        case 'k':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '5';
+            *(pp + i + 1) = '5';
+            break;
+
+        case 'l':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '5';
+            *(pp + i + 1) = '5';
+            *(pp + i + 2) = '5';
+            break;
+        case 'm':
+            *(pp + i) = '6';
+            break;
+        case 'n':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '6';
+            *(pp + i + 1) = '6';
+            break;
+
+        case 'o':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '6';
+            *(pp + i + 1) = '6';
+            *(pp + i + 2) = '6';
+            break;
+        case 'p':
+            *(pp + i) = '7';
+            break;
+        case 'r':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '7';
+            *(pp + i + 1) = '7';
+            break;
+
+        case 's':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '7';
+            *(pp + i + 1) = '7';
+            *(pp + i + 2) = '7';
+            break;
+        case 't':
+            *(pp + i) = '8';
+            break;
+        case 'u':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '8';
+            *(pp + i + 1) = '8';
+            break;
+
+        case 'v':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '8';
+            *(pp + i + 1) = '8';
+            *(pp + i + 2) = '8';
+            break;
+        case 'z':
+            *(pp + i) = '9';
+            break;
+        case 'x':
+
+            memmove(pp + i + 2, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '9';
+            *(pp + i + 1) = '9';
+            break;
+
+        case 'y':
+            memmove(pp + i + 3, pp + i + 1, strlen(pp + i));
+            *(pp + i) = '9';
+            *(pp + i + 1) = '9';
+            *(pp + i + 2) = '9';
+            break;
+        default:
+            
+            break;
+        }
+    }
+}
+
+int main() {
+    char polje[1000];
+    cin.getline(polje, sizeof(polje));
+    Zamijeni(polje);
+    Ispis(polje);
+    return 0;
+}
+
+*/
