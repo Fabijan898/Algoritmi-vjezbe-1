@@ -1,0 +1,88 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+//vrati duljinu niza
+/*
+int duzinaNiza(const char* niz) {
+    
+    const char* pokazivac = niz;
+    while (*pokazivac != '\0') {
+        pokazivac++;
+    }
+    return pokazivac - niz;
+}
+int main() {
+    const char* primerNiza = "jasamFabijan";
+    int duzina = duzinaNiza(primerNiza);
+   cout << duzina << endl;
+
+    return 0;
+}
+*/
+//mala slova
+/*
+void promeni(char* niz) {
+    char* pokazivac = niz;
+
+    while (*pokazivac != '\0') {
+        if (*pokazivac == '.') {
+            pokazivac++;
+
+            while (*pokazivac != '\0' && (*pokazivac >= 'a' && *pokazivac <= 'z')) {
+                *pokazivac = *pokazivac - ('a' - 'A');
+                pokazivac++;
+            }
+
+            if (*pokazivac != '\0') {
+                *pokazivac = ' ';
+            }
+        }
+
+        pokazivac++;
+    }
+}
+
+int main() {
+    char niz[] = "Ovo je recenica. Druga recenica. jos jedna.";
+    cout << "Originalni niz: " << niz <<endl;
+
+    promeni(niz);
+
+    cout  << niz << endl;
+
+    return 0;
+}
+*/
+
+
+
+//zadnji abecedni red
+/*
+
+char zadnjiZnak(const char* niz) {
+    if (niz == NULL || *niz == '\0') {
+        return '\0'; 
+    }
+
+    const char* trenutni = niz;
+    char najveciZnak = *trenutni;
+
+    while (*trenutni != '\0') {
+        if (*trenutni > najveciZnak) {
+            najveciZnak = *trenutni;
+        }
+        trenutni++;
+    }
+
+    return najveciZnak;
+}
+
+int main() {
+    const char* testNiz = "abcdefg";
+    char rezultat = zadnjiZnak(testNiz);
+
+    
+    return 0;
+}
+*/
