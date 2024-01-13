@@ -1,0 +1,165 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+
+
+int cetvrti(int* pp) {
+    int temp = 0;
+    for (int i = 0; *(pp + i) != 0; i++) {
+        if (*(pp + i) > *(pp + i + 1))
+            temp++;
+    }
+    return temp;
+}
+
+
+
+void treci(char* pp) {
+    for (int i = 0; *(pp + i) != '\0'; i++) {
+        if (*(pp + i) >= 'a' && *(pp + i) <= 'z')
+            *(pp + i) = *(pp + i) + ('A' - 'a');
+
+        else if (*(pp + i) >= 'A' && *(pp + i) <= 'Z')
+            *(pp + i) = *(pp + i) - ('A' - 'a');
+
+        else
+            *(pp + i) = '#';
+    }
+}
+
+
+
+
+int drugi(int* pp, int broj) {
+    for (int i = 0; *(pp + i) != 0; i++) {
+        if (*(pp + i) == broj)
+            return i;
+    }
+    return -1;
+}
+
+
+
+
+void prvi(int* pa, int* pb) {
+    int b;
+    for (int i = 0; *(pa + i) != 0 && *(pb + i) != 0; i++) {
+        if (*(pa + i) == 0 || *(pb + i) == 0)
+            break;
+        b = *(pa + i);
+        *(pa + i) = *(pb + i);
+        *(pb + i) = b;
+    }
+}
+
+
+
+
+int drugi(const char* niz, char trazeniZnak) {
+    const char* pok = nullptr;
+
+    while (*niz != '\0') {
+        if (*niz == trazeniZnak) {
+            pok = niz;
+        }
+        niz++;
+    }
+
+    if (pok != nullptr) {
+        return pok - niz + 1;
+    }
+    else {
+        return -1;
+    }
+}
+
+int main() {
+    const char* testNiz = "Ovo je testni niz";
+    char trazeniZnak = 'e';
+
+    int indeks = drugi(testNiz, trazeniZnak);
+
+    if (indeks != -1) {
+       cout <<  trazeniZnak << indeks << endl;
+    }
+    else {
+        cout << trazeniZnak  << endl;
+    }
+
+    return 0;
+}
+
+
+
+void treci(const char* niz) {
+    while (*niz != '\0') {
+        cout << *niz;
+        niz++;
+    }
+    cout << endl;
+}
+
+void izbaciSamoglasnike(char* niz) {
+    char* izlaz = niz;
+
+    while (*niz != '\0') {
+        if (*niz != 'a' && *niz != 'e' && *niz != 'i' && *niz != 'o' && *niz != 'u'
+            && *niz != 'A' && *niz != 'E' && *niz != 'I' && *niz != 'O' && *niz != 'U') {
+            *izlaz = *niz;
+            izlaz++;
+        }
+        niz++;
+    }
+
+    *izlaz = '\0';
+}
+
+int main() {
+    const int maksDuljina = 100;
+
+    char ulazniNiz[maksDuljina];
+
+    cout << "Unesite niz: ";
+    cin.getline(ulazniNiz, maksDuljina);
+
+    cout << "Originalni niz: ";
+   treci(ulazniNiz);
+
+    izbaciSamoglasnike(ulazniNiz);
+
+    cout << "Niz bez samoglasnika: ";
+   treci(ulazniNiz);
+
+    return 0;
+}
+
+
+
+int cetvrti(const int* niz) {
+    int zbroj = 0;
+
+    const int* trenutni = niz;
+    const int* sljedbenik = niz + 1;
+
+    while (*trenutni != 666) {
+        if ((*trenutni % 2 == 0 && *sljedbenik % 2 != 0) || (*trenutni % 2 != 0 && *sljedbenik % 2 == 0)) {
+            zbroj += *trenutni;
+        }
+
+        trenutni++;
+        sljedbenik++;
+    }
+
+    return zbroj;
+}
+
+int main() {
+    const int niz[] = { 1, 2, 3, 4, 5, 6, 666 };
+
+    int rezultat = cetvrti(niz);
+
+    cout << rezultat << endl;
+
+    return 0;
+}
