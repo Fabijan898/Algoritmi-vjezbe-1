@@ -1,0 +1,189 @@
+//REKURZIJE
+#include <iostream>
+using namespace std;
+
+//ispisuje brojeve od n do 1 bez petlji
+/*
+void ispisvećimanji(int a) 
+{
+	if (a == 0) {
+		return;
+	}
+		cout << a << endl;
+		ispisvećimanji(a - 1);
+}
+int main()
+{
+	int a;
+	cin >> a;
+	cout << endl<<endl;
+    ispisvećimanji(a);
+	return 0;
+}
+*/
+//ispisuje brojeve od 1 do n bez petlji
+/*
+void ispisvećimanji(int a)
+{
+	if (a == 0) {
+		return;
+	}
+		ispisvećimanji(a - 1);
+		cout << a << endl;
+}
+int main()
+{
+	int a;
+	cin >> a;
+	cout << endl<<endl;
+	ispisvećimanji(a);
+	return 0;
+}
+*/
+// broj parnih znamenki
+/*
+int parni(int a) {
+	if (a == 0)
+		return 0;
+	if ((a % 10) % 2 == 0)
+		return 1 + parni(a / 10);
+	else
+		return parni(a / 10);
+}
+int main() {
+	int f = -123456;
+	cout << f << endl << parni(f) <<endl;
+	return 0;
+}
+*/
+//broj neparnih znamenki
+/*
+neparni(int a) {
+	if (a == 0)
+		return 0;
+	if ((a % 10) % 2 != 0)
+		return 1 + neparni(a / 10);
+	else
+		return neparni(a / 10);
+}
+int main() {
+	int f = -304;
+	cout << f << endl << neparni(f) << endl;
+	return 0;
+}
+*/
+//--------Cjelovita skupina naredbi-----------
+//vrati zbroj znamenki nekog broja
+/*
+int zbroj(int a) {
+	if (a == 0)
+		return 0;
+	return a % 10 + zbroj(a / 10);
+}
+int main() {
+	int f =3846936;
+	cout << f << endl << zbroj(f) << endl;
+	return 0;
+}
+*/
+
+// napisi rekurzivnu funkciju koja vrati broj znakova nekog niza
+/*
+int funkcija(char* a, int i) {
+	for (i = 0; *(a + i) != '\0'; i++);
+	return i;
+}
+
+int brojznamenki(char* niz) {
+	//bazni slucaj
+	if (*niz == '\0')
+		return 0;
+	return 1 + brojznamenki(niz + 1);
+}
+int main() {
+	char niz1[] = "A ti si taj taj taj";
+	int duljinaNiza1 = funkcija(niz1, 0);
+	cout <<  duljinaNiza1 << endl;
+	return 0;
+}
+*/
+// napisi rekurzivnu funkciju koja vrati broj slova u nizu
+/*
+int brojslovaunizu(char* a) {
+	if (*a == '\0')
+		return 0;
+	if ((*a >= 'a' && *a <= 'z') || (*a >= 'A' && *a <= 'Z'))
+		return 1 + brojslovaunizu(a+1); // ako je slovo
+	else
+		return 0 + brojslovaunizu(a+1); // ako je razmak
+}
+int main() {
+	char niz1[] = "Ja sam Fabijan";
+	int duljinaNiza1 = brojslovaunizu(niz1);
+	cout << duljinaNiza1 << endl;
+	return 0;
+}
+*/
+
+
+//napisi rekurzivnu funkciju koja vrati umnozak svih brojeva u nekom polju
+//polje zavrsava brojem 666 ali ne uzima u umnozak
+/*
+int umnozak(int* a) {
+	if (*a == 666)
+		return 1;
+	return *a * umnozak(a + 1);
+
+}
+int main() {
+	int f[] = {1,2,3,4,666};
+	cout << umnozak(f) << endl;
+	return 0;
+}
+*/
+
+//napisi rekurzivnu funkciju koja vrati broj velikih slova u nekom nizu
+/*
+int brojvelikihslova(char* a) {
+	if (*a == '\0')
+		return 0;
+	if (*a >= 'A' && *a <= 'Z')
+		return 1 + brojvelikihslova(a + 1); // ako je slovo
+	else
+		return 0 + brojvelikihslova(a + 1); // ako je razmak
+}
+int main() {
+	char niz1[] = "Ja sam Fabijan";
+	int duljinaNiza1 = brojvelikihslova(niz1);
+	cout << duljinaNiza1 << endl;
+	return 0;
+}
+*/
+// napisi program koji iz nekog niza izbaci sve razmake
+// ne smijes korisititi petlje
+/*
+void pomakni(char* niz) {
+	if (*niz == '\0')
+		return;
+	*niz = *(niz + 1);
+	pomakni(niz + 1);
+}
+
+void izbacirazmak(char* niz) {
+	if (*niz == '\0')
+		return;
+	if (*niz == ' ') {
+		pomakni(niz);
+		izbacirazmak(niz);
+	}
+	else
+		izbacirazmak(niz + 1);
+}
+
+int main() {
+	char a[] = "Ja sam taj taj taj";
+	izbacirazmak(a);
+	cout << a<< endl;
+	return 0;
+}
+*/
