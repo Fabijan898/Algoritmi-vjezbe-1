@@ -1,0 +1,168 @@
+#include <iostream>
+using namespace std;
+
+//satblo koje ima dav čvora muški i žensi i mora ispisati brojm muških
+
+/*
+struct stablo {
+	bool posjeceno = false;
+	int id;
+	char spol;
+	stablo* l = NULL;
+	stablo* d = NULL;
+};
+
+int brojacm(stablo* t) {
+	int m = 0;
+	if ((*t).l != NULL) {
+		m += brojacm((*t).l);
+	}
+	if ((*t).d != NULL) {
+		m += brojacm((*t).d);
+	}
+	if ((*t).spol == 'm' && !(*t).posjeceno) {
+		(*t).posjeceno = true;
+		return 1 + m;
+	}
+	return m;
+}
+
+void reseiraj(stablo* t) {
+	if ((*t).l != NULL) {
+		reseiraj((*t).l);
+	}
+	if ((*t).d != NULL) {
+		reseiraj((*t).d);
+	}
+	(*t).posjeceno = false;
+}
+
+int brojacz(stablo* t) {
+	int z = 0;
+	if ((*t).l != NULL) {
+		z += brojacz((*t).l);
+	}
+	if ((*t).d != NULL) {
+		z += brojacz((*t).d);
+	}
+	if ((*t).spol == 'ž' && !(*t).posjeceno) {
+		(*t).posjeceno = true;
+		return 1 + z;
+	}
+	return z;
+}
+
+int main() {
+	stablo o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13;
+
+	o1.l = &o2;
+	o1.d = &o3;
+
+	o2.l = &o4;
+	o2.d = &o5;
+
+	o3.l = &o6;
+	o3.d = &o7;
+
+	o4.l = &o8;
+	o4.d = &o9;
+
+	o5.l = &o9;
+
+	o6.l = &o10;
+	o6.d = &o11;
+
+	o7.l = &o11;
+	o7.d = &o12;
+
+	o8.l = &o13;
+	o8.d = NULL;
+
+	o9.l = NULL;
+	o9.d = NULL;
+
+	o1.spol = 'ž';
+	o2.spol = 'ž';
+	o3.spol = 'm';
+	o4.spol = 'm';
+	o5.spol = 'm';
+	o6.spol = 'ž';
+	o7.spol = 'm';
+	o8.spol = 'ž';
+	o9.spol = 'm';
+	o10.spol = 'ž';
+	o11.spol = 'm';
+	o12.spol = 'm';
+	o13.spol = 'm';
+
+	cout << brojacz(&o1);
+	cout << endl;
+
+	return 0;
+}
+*/
+//napisi strukturu za čvor-stablo
+struct c {
+	int id;
+	c* l = NULL;
+	c* d = NULL;
+
+};
+
+
+int funkcija(c* t) {
+	if (t == NULL) {
+		return 0;
+	}
+	if (t != NULL) {
+
+	}
+}
+
+
+int rf(c* t) {
+	int bl = 1;
+	int bd = 1;
+	if ((*t).l != NULL) {
+		bl += (*t).id + rf((*t).l);
+	}
+	if ((*t).d != NULL) {
+		bd += (*t).id + rf((*t).d);
+	}
+	return bl + bd;
+}
+
+
+
+int main() {
+	c c1, c2, c3, c4, c5, c6, c7, c8, c9;
+	c1.id = 1;
+	c2.id = 2;
+	c3.id = 3;
+	c4.id = 4;
+	c5.id = 5;
+	c6.id = 6;
+	c7.id = 7;
+	c8.id = 8;
+	c9.id = 9;
+
+	c1.l = &c2;
+	c1.d = &c3;
+
+	c2.l = &c4;
+	c2.d = &c5;
+
+	c3.l = &c6;
+	c3.d = &c7;
+
+	c4.d = &c8;
+
+	c5.l = &c8;
+
+	c6.d = &c9;
+
+	c7.l = &c9;
+
+	cout << rf(&c1);
+
+}
