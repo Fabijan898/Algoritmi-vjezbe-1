@@ -1,0 +1,270 @@
+#include <iostream>
+using namespace std;
+//1. napiosi strukturu auto koja ima ime, proizvođača, snagu i god proizvodnje. Inapiši funkciju koja to Lijepo ispiše.
+/*
+struct automobil {
+	string ime;
+	string proizvođač;
+	int snaga;
+	int god;
+};
+automobil upis(automobil *a)
+{
+	cin >> a->ime;
+	cin >> a->proizvođač;
+	cin >> a->snaga;
+	cin >> a->god;
+	return *a;
+}
+void ispis(automobil a) {
+	cout <<"Ime: "<< a.ime << endl;
+	cout <<"Proizvođač: " << a.proizvođač << endl;
+	cout <<"Snaga: " << a.snaga << " konjskih snaga" << endl;
+	cout <<"Godina proizvodnje: " << a.god << endl;
+}
+
+int main() {
+	automobil a1;
+	upis(&a1);
+	ispis(a1);
+	return 0;
+}
+*/
+//2.Omogucuje unos podataka za automobil u polju (max10).
+/*struct automobil {
+	string ime;
+	string proizvođač;
+	int snaga;
+	int god;
+};
+
+void ispis(automobil a) {
+	cout << "Ime: " << a.ime << endl;
+	cout << "Proizvodac: " << a.proizvođač << endl;
+	cout << "Snaga: " << a.snaga << " konjskih snaga" << endl;
+	cout << "God: " << a.god << endl;
+}
+
+int main() {
+	automobil a[10];
+	bool da = true;
+	int br;
+	cout << "Unesi broj koliko auta zelis unesti(max 10): ";
+	cin >> br;
+	if (da) {
+		for (int i = 0; i < br; i++) {
+			cout << endl << "Ime: " << endl;
+			cin >> a[i].ime;
+			cout << "Proizvodac: " << endl;
+			cin >> a[i].proizvođač;
+			cout << "Snaga: " << endl;
+			cin >> a[i].snaga;
+			cout << "Godiste: " << endl;
+			cin >> a[i].god;
+
+		}
+	}
+	cout << endl << endl;
+	cout << "Podaci za unesene automobile: " << endl;
+	for (int i = 0; i < br; i++) {
+		cout << endl << "Automobil " << i + 1 << endl;
+		ispis(a[i]);
+	}
+	return 0;
+}
+*/
+//3. Funkcija koja smanji snagu za 1 ako je snaga veća od 0i vrati true ako je uspijelo ili fals ako nije
+/* struct automobil {
+	string ime;
+	string proizvođač;
+	int snaga;
+	int god;
+};
+
+void ispis(automobil a) {
+	cout << "Ime: " << a.ime << endl;
+	cout << "Proizvodac: " << a.proizvođač << endl;
+	cout << "Snaga: ";
+	if (a.snaga > 0) {
+		cout << (a.snaga-1) << " konjskih snaga" << endl;
+	}
+	else {
+		cout << a.snaga << " konjskih snaga" << endl;
+	}
+	cout << "God: " << a.god << endl;
+}
+bool snagasesmanjujeza1(automobil* a) {
+	if ((*a).snaga > 0) {
+		(*a).snaga--;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+int main() {
+	automobil a[10];
+	bool da = true;
+	int br;
+	cout << "Unesi broj koliko auta zelis unesti(max 10): ";
+	cin >> br;
+	if (da) {
+		for (int i = 0; i < br; i++) {
+			cout << endl << "Ime: " << endl;
+			cin >> a[i].ime;
+			cout << "Proizvodac: " << endl;
+			cin >> a[i].proizvođač;
+			cout << "Snaga: " << endl;
+			cin >> a[i].snaga;
+			cout << "Godiste: " << endl;
+			cin >> a[i].god;
+
+		}
+	}
+	cout << endl << endl;
+	cout << "Podaci za unesene automobile: " << endl;
+	for (int i = 0; i < br; i++) {
+		cout << endl << "Automobil " << i + 1 << endl;
+		ispis(a[i]);
+	}
+	cout <<endl<< snagasesmanjujeza1(&a[0]) << endl;
+	return 0;
+}
+*/
+/*
+struct osobe {
+	string ime;
+	string prezime;
+	string spol;
+	int godiste;
+};
+osobe upis(osobe* o) {
+	cin >> o->ime;
+	cin >> o->prezime;
+	cin >> o->spol;
+	cin >> o->godiste;
+	return*o;
+
+}
+void ispis(osobe o) {
+	cout << "Ime: " << o.ime << endl;
+	cout << "Prezime: " << o.prezime << endl;
+	cout << "Spol: " << o.spol << endl;
+	cout << "Godiste: " << o.godiste << endl;
+}
+int main() {
+	osobe o1;
+	osobe o2;
+	upis(&o1);
+	ispis(o1);
+	upis(&o2);
+	ispis(o2);
+	return 0;
+}
+*/
+/*
+struct osobe {
+	string ime;
+	string prezime;
+	string spol;
+	int godiste;
+};
+void ispis(osobe o) {
+	cout << "Ime: " << o.ime << endl;
+	cout << "Prezime: " << o.prezime << endl;
+	cout << "Spol: " << o.spol << endl;
+	cout << "Godiste: " << o.godiste << endl;
+}
+int main() {
+	osobe o[5];
+	bool da = true;
+	int br;
+	cout << "Unesi broj koliko osoba zelis(max5):" << endl;
+	cin >> br;
+	if (da) {
+		for (int i = 0; i < br; i++) {
+			cout << endl << "Ime: " << endl;
+			cin >> o[i].ime;
+			cout << endl << "Prezime: " << endl;
+			cin >> o[i].prezime;
+			cout << endl << "Spol: " << endl;
+			cin >> o[i].spol;
+			cout << endl << "Godiste: " << endl;
+			cin >> o[i].godiste;
+		}
+	}
+	cout << endl << endl;
+	cout << "Podatci za unesene osobe: " << endl;
+	for (int i = 0; i < br; i++) {
+		cout << "Osoba " << i + 1 << endl;
+		ispis(o[i]);
+	}
+	return 0;
+
+}
+*/
+struct osobe {
+	string ime;
+	string prezime;
+	string spol;
+	int godiste;
+};
+
+void ispis(osobe o) {
+	cout << "Ime: " << o.ime << endl;
+	cout << "Prezime: " << o.prezime << endl;
+	cout << "Spol: " << o.spol << endl;
+	cout << "Godiste: " << o.godiste << endl;
+}
+
+void sortiraj_i_ispisi(osobe o[], int br) {
+	int broj_muskih = 0;
+	int broj_zenskih = 0;
+
+	cout << "Podatci za unesene osobe: " << endl;
+	for (int i = 0; i < br; i++) {
+		cout << "Osoba " << i + 1 << endl;
+		ispis(o[i]);
+		if (o[i].spol == "muski") {
+			broj_muskih++;
+		}
+		else if (o[i].spol == "zenski") {
+			broj_zenskih++;
+		}
+	}
+
+	cout << "Broj muskih osoba: " << broj_muskih << endl;
+	cout << "Broj ženskih osoba: " << broj_zenskih << endl;
+}
+
+int main() {
+	osobe o[5];
+	int br;
+
+	cout << "Unesi broj koliko osoba zelis (max 5):" << endl;
+	cin >> br;
+
+	if (br > 5 || br < 1) {
+		cout << "Neispravan unos. Molimo unesite broj između 1 i 5." << endl;
+		return 1;
+	}
+
+	for (int i = 0; i < br; i++) {
+		cout << endl << "Ime: ";
+		cin >> o[i].ime;
+		cout << endl << "Prezime: ";
+		cin >> o[i].prezime;
+		cout << endl << "Spol (muski/zenski): ";
+		cin >> o[i].spol;
+		cout << endl << "Godiste: ";
+		cin >> o[i].godiste;
+	}
+
+	cout << endl;
+
+	sortiraj_i_ispisi(o, br);
+
+	return 0;
+}
