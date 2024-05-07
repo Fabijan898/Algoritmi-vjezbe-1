@@ -1,0 +1,123 @@
+#include <iostream>
+using namespace std;
+
+struct Vozilo {
+        string proizvodac;
+        string model;
+        int godinaproizvodnje;
+        int snaga;
+};
+
+struct Cvor {
+        bool posjeceni = false;
+        Cvor *L = NULL;
+        Cvor *D = NULL;
+        Cvor* S = NULL;
+};
+
+void ipisSvojstva(Vozilo o) {
+        cout << endl << "Vozilo je modela: " << o.model << endl;
+        cout << endl << "Vozilo je napravio: " << o.proizvodac << endl;
+        cout << endl << "Vozilo je napravljeno godine: " << o.godinaproizvodnje << endl;
+        cout << endl << "Vozilo je snage : " << o.snaga << endl;
+}
+
+bool smanjiSnagu(Vozilo *o) {
+        if ((*o).snaga > 0) {
+                (*o).snaga--;
+                return 1;
+        }
+        return 0;
+}
+
+int brojCvorova(Cvor *o) {
+        if ((*o).posjeceni)
+                return -1;
+        int d = 0;
+        int l = 0;
+        int s = 0;
+        (*o).posjeceni = true;
+        if ((*o).D != NULL) {
+                d += brojCvorova((*o).D);
+        }
+        if ((*o).L != NULL) {
+                l += brojCvorova((*o).L);
+        }
+        if ((*o).S != NULL) {
+                s += brojCvorova((*o).S);
+        }
+        if ((d == 0) && (l == 0) && (s == 0))
+                return 0;
+        if (d < l && s < l)
+                return l + 1;
+        if (s > d)
+                return s + 1;
+        return d + 1;
+}
+
+int main()
+{
+        Vozilo o[10];
+        bool ocem = true;
+        int br;
+        cout << "upisi broj koliko auta zelis unesti(max 10): ";
+        cin >> br;
+        if (ocem) {
+                for (int i = 0; i < br; i++) {
+                        cout << endl << endl << "Upisi proizvodaca: ";
+                        cin >> o[i].proizvodac;
+                        cout << endl << "Upisi model: ";
+                        cin >> o[i].model;
+                        cout << endl << "Upisi godinu proizvodnje: ";
+                        cin >> o[i].godinaproizvodnje;
+                        cout << endl << "Upisi snagu: ";
+                        cin >> o[i].snaga;
+                }
+        }
+        ipisSvojstva(o[0]);
+        cout << smanjiSnagu(&o[0]) << endl;
+
+        Cvor c1, c2, c3, c4, c5;
+        c1.L = &c2;
+       c1.D = &c3;
+        c1.S = &c2;
+        c2.L = &c1;
+        c2.D = &c4;
+        c2.S = &c1;
+        c3.L = &c2;
+        c3.S = &c1;
+        c3.D = &c5;
+        cout << brojCvorova(&c1);
+}
+int main(){
+    FILE *izlaz;
+    izlaz=fopen("mojFajl.txt", "r");
+    int polje[10000][3];
+    for (int i=0; i<1000; i++){
+        fprintf(izlaz, "%d %d %d\n", rand()%100, rand()%100, rand()%100);
+
+        fscanf(izlaz, "%d %d %d\n", &a, &b, &c);
+        polje[i][0]=a;
+        polje[i][1]=b;
+        polje[i][2]=c;
+        printf("%d %d %d\n", a,b,c);
+        cout<<a<<" "<<b<<" "<<c<<endl;
+
+    }
+
+    int a,b,c, brojIspravnih=0;
+    while ( fscanf(izlaz, "%d %d %d\n", &a, &b, &c) != EOF ){
+        if (a+b==c)
+            brojIspravnih++;
+    }
+    fclose(izlaz);
+    for (int i=0; i<100; i++)
+        if (polje[i][0]+polje[i][1]==polje[i][2])
+            fprintf(izlaz, "%d %d %d %c\n", 
+                    polje[i][0], polje[i][1], polje[i][2], 'T');
+        else
+            fprintf(izlaz, "%d %d %d %c\n", 
+                    polje[i][0], polje[i][1], polje[i][2], 'N');
+
+    return 0;
+}
