@@ -1,0 +1,46 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+/*
+int main()
+{
+    FILE* tekst;
+    tekst = fopen("tekst.txt", "r");
+    int v1, v2, brojredaka = 0;
+    int z1 = 0, z2 = 0;
+    while (fscanf(tekst, "%d\t%d\n", &v1, &v2) != EOF) {
+        brojredaka++;
+        z1 += v1;
+        z2 += v2;
+    }
+    cout << z1 / brojredaka << endl;
+    cout << z2 / brojredaka << endl;
+    return 0;
+}
+*/
+int main()
+{
+    FILE* test;
+    test = fopen("test.txt", "r");
+
+    int polje[100][100];
+    int i = 0;
+
+    int brojL, brojD;
+    while (fscanf(test, "%d\t%d", &brojL, &brojD) != EOF) {
+        polje[i][0] = brojL;
+        polje[i][1] = brojD;
+        i++;
+    }
+
+    FILE* promjeni;
+    promjeni = fopen("test.txt", "w+");
+
+    for (int j = 0; j < i; j++) {
+        int zbroj = 0;
+        zbroj = polje[j][0] + polje[j][1];
+        fprintf(promjeni, "%d\t%d\t%d\n", polje[j][0], polje[j][1], zbroj);
+    }
+
+    fclose(test);
+}
