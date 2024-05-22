@@ -1,0 +1,94 @@
+#include <iostream>
+#include<fstream>
+#include<string>
+#include <unordered_map>
+#include <sstream>
+using namespace std;
+/*
+int main()
+{
+    FILE* unos;
+    int broj;
+    unos = fopen("prvi.txt", "a+");
+    while (1) {
+        cin >> broj;
+        if (broj == 0)
+            break;
+        fprintf(unos, "%d\n", broj);
+    }
+    fclose(unos);
+}
+*/
+/*
+int main() {
+    string naziv = "prvi.txt";
+    ifstream datoteka(naziv);
+    int trazeniBroj;
+    cout << "Unesite broj koji tražite: ";
+    cin >> trazeniBroj;
+    string linija;
+    int trenutniRedak = 0;
+    int zadnjiRedak = -1;
+    while (getline(datoteka, linija)) {
+        trenutniRedak++;
+        if (stoi(linija) == trazeniBroj) {
+            zadnjiRedak = trenutniRedak;
+        }
+    }
+    datoteka.close();
+
+    if (zadnjiRedak != -1) {
+        cout << "Broj " << trazeniBroj << " se nalazi u zadnjem pojavljivanju u retku " << zadnjiRedak << "." << endl;
+    }
+    else {
+        cout << "Broj " << trazeniBroj << " nije pronađen u datoteci." << endl;
+    }
+    return 0;
+}
+*/
+/*
+int main() {
+    string naziv = "datoteka.txt";
+    ifstream datoteka(naziv);
+    unordered_map<char, int> zbrojevi;
+    char prvoSlovo, drugoSlovo;
+    int broj;
+    while (datoteka >> prvoSlovo >> drugoSlovo >> broj) {
+        zbrojevi[prvoSlovo] += prvoSlovo * broj;
+        zbrojevi[drugoSlovo] += drugoSlovo * broj;
+    }
+    datoteka.close();
+    for (const auto& par : zbrojevi) {
+        cout << "Ukupan zbroj za slovo " << par.first << " je " << par.second << "." << endl;
+    }
+    return 0;
+}
+*/
+/*
+bool jePoredano(int a, int b, int c) {
+    return (a <= b && b <= c);
+}
+
+int main() {
+    string naziv = "datokeka.txt";
+    ifstream datokeka(naziv);
+    string izlazNaziv = "izlaz.txt";
+    ofstream izlazDatoteka(izlazNaziv);
+    string linija;
+    while (getline(datokeka, linija)) {
+        stringstream ss(linija);
+        string brojStr;
+        int brojevi[3], i = 0;
+        while (getline(ss, brojStr, ',')) {
+            brojevi[i++] = stoi(brojStr);
+        }
+        bool poredano = jePoredano(brojevi[0], brojevi[1], brojevi[2]);
+        izlazDatoteka << linija << (poredano ? " T" : " N") << endl;
+    }
+
+    datokeka.close();
+    izlazDatoteka.close();
+
+    return 0;
+}
+*/
